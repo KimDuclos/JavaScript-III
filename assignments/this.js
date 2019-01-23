@@ -16,7 +16,18 @@
 
 // Principle 1
 
-console.log("****code example for Window Binding****");
+console.log("****code example for Window Binding(commented out to skip error)****");
+
+// const car = {
+//     make: Chevy,
+//     model: Cobalt, 
+//     year: 2007,
+//     carInfo: function() {
+//         console.log(`This car is a ${year} ${make} ${model} and it's the okayest car.`) // error in window binding
+//     }
+// }
+
+// car.carInfo();
 
 // Principle 2
 
@@ -37,6 +48,34 @@ athlete.bio();
 
 console.log("****code example for New Binding****");
 
+function CordialPerson(name) {
+    this.greeter = name;
+    this.greeter = greeter;
+    this.greeting = "Hello";
+    this.speak = function() {
+      console.log(`${this.greeting}, ${this.greeter}`)
+    }
+  }
+
+const jerry = new CordialPerson('Newman');
+const newman = new CordialPerson('Jerry');
+
+
 // Principle 4
 
 console.log("****code example for Explicit Binding****");
+
+const pet = {
+    type: 'fish'
+  }
+  
+  const hobbit = {
+    name: 'Kitty'
+  }
+  
+  const needs = ['food', 'water', 'filter'];
+  
+  function introduce(need1, need2, need3) {
+    
+    console.log(`My ${type}'s name is ${this.name}, and he requires: ${need1}, ${need2}, ${need3}`)  // this is stored for later use, not output now
+  }
