@@ -7,7 +7,7 @@
   
   Each constructor function has unique properties and methods that are defined in their block comments below:
 */
-  
+
 /*
   === GameObject ===
   * createdAt
@@ -50,7 +50,7 @@ function CharacterStats(charInfo) {
   * should inherit destroy() from GameObject through CharacterStats
   * should inherit takeDamage() from CharacterStats
 */
- 
+
 function Humanoid(humanoidInfo) {
   CharacterStats.call(this, humanoidInfo);
   this.team = humanoidInfo.team;
@@ -70,69 +70,158 @@ function Humanoid(humanoidInfo) {
 // Test you work by un-commenting these 3 objects and the list of console logs below:
 
 
-  const mage = new Humanoid({
-    createdAt: new Date(),
-    dimensions: {
-      length: 2,
-      width: 1,
-      height: 1,
-    },
-    healthPoints: 5,
-    name: 'Bruce',
-    team: 'Mage Guild',
-    weapons: [
-      'Staff of Shamalama',
-    ],
-    language: 'Common Tongue',
-  });
+const mage = new Humanoid({
+  createdAt: new Date(),
+  dimensions: {
+    length: 2,
+    width: 1,
+    height: 1,
+  },
+  healthPoints: 5,
+  name: 'Bruce',
+  team: 'Mage Guild',
+  weapons: [
+    'Staff of Shamalama',
+  ],
+  language: 'Common Tongue',
+});
 
-  const swordsman = new Humanoid({
-    createdAt: new Date(),
-    dimensions: {
-      length: 2,
-      width: 2,
-      height: 2,
-    },
-    healthPoints: 15,
-    name: 'Sir Mustachio',
-    team: 'The Round Table',
-    weapons: [
-      'Giant Sword',
-      'Shield',
-    ],
-    language: 'Common Tongue',
-  });
+const swordsman = new Humanoid({
+  createdAt: new Date(),
+  dimensions: {
+    length: 2,
+    width: 2,
+    height: 2,
+  },
+  healthPoints: 15,
+  name: 'Sir Mustachio',
+  team: 'The Round Table',
+  weapons: [
+    'Giant Sword',
+    'Shield',
+  ],
+  language: 'Common Tongue',
+});
 
-  const archer = new Humanoid({
-    createdAt: new Date(),
-    dimensions: {
-      length: 1,
-      width: 2,
-      height: 4,
-    },
-    healthPoints: 10,
-    name: 'Lilith',
-    team: 'Forest Kingdom',
-    weapons: [
-      'Bow',
-      'Dagger',
-    ],
-    language: 'Elvish',
-  });
+const archer = new Humanoid({
+  createdAt: new Date(),
+  dimensions: {
+    length: 1,
+    width: 2,
+    height: 4,
+  },
+  healthPoints: 10,
+  name: 'Lilith',
+  team: 'Forest Kingdom',
+  weapons: [
+    'Bow',
+    'Dagger',
+  ],
+  language: 'Elvish',
+});
 
-  console.log(mage.createdAt); // Today's date
-  console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
-  console.log(swordsman.healthPoints); // 15
-  console.log(mage.name); // Bruce
-  console.log(swordsman.team); // The Round Table
-  console.log(mage.weapons); // Staff of Shamalama
-  console.log(archer.language); // Elvish
-  console.log(archer.greet()); // Lilith offers a greeting in Elvish.
-  console.log(mage.takeDamage()); // Bruce took damage.
-  console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
+console.log(mage.createdAt); // Today's date
+console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
+console.log(swordsman.healthPoints); // 15
+console.log(mage.name); // Bruce
+console.log(swordsman.team); // The Round Table
+console.log(mage.weapons); // Staff of Shamalama
+console.log(archer.language); // Elvish
+console.log(archer.greet()); // Lilith offers a greeting in Elvish.
+console.log(mage.takeDamage()); // Bruce took damage.
+console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
 
 
-  // Stretch task: 
-  // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.  
-  // * Give the Hero and Villains different methods that could be used to remove health points from objects which could result in destruction if health gets to 0 or drops below 0;
-  // * Create two new objects, one a villain and one a hero and fight it out with methods!
+console.log("*********Stretch Task*********")
+// * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.  
+// * Give the Hero and Villains different methods that could be used to remove health points from objects which could result in destruction if health gets to 0 or drops below 0;
+// * Create two new objects, one a villain and one a hero and fight it out with methods!
+
+function Hero(heroInfo) {
+  Humanoid.call(this, heroInfo);
+  this.losePoints = () => {
+    if (this.healthPoints <= 0) { // destroy character if health goes 0 or below
+      console.log("Health gone. Villain loses");
+    } else {
+      this.healthPoints--;
+      console.log(`Hero took damage. Health is now ${this.healthPoints}`);
+    }
+  }
+  this.gainPoints = () => {
+    this.healthPoints++;
+    console.log(`Hero gained health. Health is now ${this.healthPoints}`);
+  }
+}
+
+
+function Villain(villainInfo) {
+  Humanoid.call(this, villainInfo);
+  this.losePoints = () => {
+    if (this.healthPoints <= 0) {  // destroy character if health goes 0 or below
+      console.log("Health gone. Villain loses");
+    } else {
+      this.healthPoints--;
+      console.log(`Villain took damage. Health is now ${this.healthPoints}`);
+
+    }
+  }
+  this.gainPoints = () => {
+    this.healthPoints++;
+    console.log(`Villain gained health. Health is now ${this.healthPoints}`);
+
+  }
+};
+
+
+
+//call constructors with values
+const goodGuy = new Hero({
+  createdAt: new Date(),
+  dimensions: {
+    length: 4,
+    width: 3,
+    height: 2,
+  },
+  healthPoints: 5,
+  name: 'Chippy',
+  team: 'Awesome Dudes',
+  weapons: [
+    'Hammer',
+    'Stick',
+  ],
+  language: 'Elvish',
+});
+
+
+const badGuy = new Villain({
+  createdAt: new Date(),
+  dimensions: {
+    length: 3,
+    width: 1,
+    height: 2,
+  },
+  healthPoints: 7,
+  name: 'Captain',
+  team: 'Not So Cool Dudes',
+  weapons: [
+    'Small Sword',
+    'Thorned Twig',
+  ],
+  language: 'Common Tongue',
+});
+
+goodGuy.gainPoints();
+goodGuy.losePoints();
+badGuy.gainPoints();
+badGuy.losePoints();
+goodGuy.gainPoints();
+badGuy.losePoints();
+badGuy.losePoints();
+badGuy.losePoints();
+badGuy.losePoints();
+badGuy.losePoints();
+badGuy.losePoints();
+badGuy.losePoints();
+badGuy.losePoints();
+
+
