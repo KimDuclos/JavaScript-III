@@ -18,8 +18,8 @@
 function GameObject(gameInfo) {
   this.createdAt = gameInfo.createdAt;
   this.dimensions = gameInfo.dimensions;
-  this.destroy = function() {
-    console.log(`${this.name} was removed from the game.`)
+  this.destroy = () => {
+    return (`${this.name} was removed from the game.`)
   }
 }
 
@@ -36,8 +36,8 @@ function CharacterStats(charInfo) {
   GameObject.call(this, charInfo)
   this.healthPoints = charInfo.healthPoints;
   this.name = charInfo.name;
-  this.takeDamage = function() {
-    console.log(`${this.name} took damage.`);
+  this.takeDamage = () => {
+    return (`${this.name} took damage.`);
   }
 }
 
@@ -56,8 +56,8 @@ function Humanoid(humanoidInfo) {
   this.team = humanoidInfo.team;
   this.weapons = humanoidInfo.weapons;
   this.language = humanoidInfo.language;
-  this.greet = function() {
-    console.log(`${this.name} offers a greeting in ${this.language}.`);
+  this.greet = () => {
+    return (`${this.name} offers a greeting in ${this.language}.`);
   }
 }
 
