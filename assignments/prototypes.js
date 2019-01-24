@@ -16,10 +16,10 @@
 */
 
 function GameObject(gameInfo) {
-  this.creation = gameInfo.creation;
+  this.createdAt = gameInfo.createdAt;
   this.dimensions = gameInfo.dimensions;
   this.destroy = function() {
-    console.log('Object was removed from the game.')
+    console.log(`${this.name} was removed from the game.`)
   }
 }
 
@@ -57,7 +57,7 @@ function Humanoid(humanoidInfo) {
   this.weapons = humanoidInfo.weapons;
   this.language = humanoidInfo.language;
   this.greet = function() {
-    console.log(this.language);
+    console.log(`${this.name} offers a greeting in ${this.language}.`);
   }
 }
 
