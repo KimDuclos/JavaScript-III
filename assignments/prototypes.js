@@ -37,7 +37,7 @@ function CharacterStats(charInfo) {
   this.healthPoints = charInfo.healthPoints;
   this.name = charInfo.name;
   this.takeDamage = function() {
-    console.log(`${charName} took damage.`);
+    console.log(`${this.name} took damage.`);
   }
 }
 
@@ -57,7 +57,7 @@ function Humanoid(humanoidInfo) {
   this.weapons = humanoidInfo.weapons;
   this.language = humanoidInfo.language;
   this.greet = function() {
-    console.log($(words))
+    console.log(this.language);
   }
 }
 
@@ -70,7 +70,7 @@ function Humanoid(humanoidInfo) {
 // Test you work by un-commenting these 3 objects and the list of console logs below:
 
 
- /* const mage = new Humanoid({
+  const mage = new Humanoid({
     createdAt: new Date(),
     dimensions: {
       length: 2,
@@ -130,7 +130,7 @@ function Humanoid(humanoidInfo) {
   console.log(archer.greet()); // Lilith offers a greeting in Elvish.
   console.log(mage.takeDamage()); // Bruce took damage.
   console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
-*/
+
 
   // Stretch task: 
   // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.  
